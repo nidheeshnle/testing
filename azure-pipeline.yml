@@ -1,0 +1,21 @@
+trigger:
+- main
+stages:
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:
+  - job: Deploy
+    displayName: Deploy
+  - deployment: nginxDeploy
+    displayName: Production
+    environment:
+      name: nginx
+      resourceType: VirtualMachine
+      tags: nginx
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: |
+             cd /var/www/html/
+             sudo service nginx restart
