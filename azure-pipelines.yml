@@ -1,19 +1,20 @@
-# HTML
-# Archive your static HTML project and save it with the build record.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+  branches:
+    include:
+      - main
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+- job: CloneAndCopy
+  displayName: 'Clone and Copy File'
+  pool:
+    vmImage: 'ubuntu-latest'
 
-steps:
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(build.sourcesDirectory)'
-    Contents: 'path/to/source/index.html'
-    TargetFolder: '$(Build.SourcesDirectory)/var/www/html/'
-    includeRootFolder: false
-- task: PublishBuildArtifacts@1
+  steps:
+  - checkout: self
+
+  - task: CopyFiles@2
+    displayName: 'Copy File'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: '/var/www/index.hml'
+      TargetFolder: '$(Build.SourcesDirectory)/var/www/html/'
