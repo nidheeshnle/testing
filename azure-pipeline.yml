@@ -5,17 +5,19 @@ stages:
   displayName: Deploy stage
   jobs:
   - job: Deploy
-    displayName: Deploy
-  - deployment: nginxDeploy
+    displayName: madiwala
+  - deployment: VMDeploy
     displayName: Production
     environment:
-      name: nginx
+      name: madiwala
+      resourcesNAme : madiwala
       resourceType: VirtualMachine
-      tags: nginx
     strategy:
       runOnce:
         deploy:
           steps:
           - script: |
-             cd /var/www/html/
-             sudo service nginx restart
+             cd /var/www/html
+             sudo git reset --hard
+             sudo git checkout main
+             sudo git pull
