@@ -10,7 +10,7 @@ stages:
     displayName: Production
     environment:
       name: madiwala
-      resourcesNAme : madiwala
+      resourcesName : madiwala
       resourceType: VirtualMachine
     strategy:
       runOnce:
