@@ -1,0 +1,22 @@
+trigger:
+- main
+stages:
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:
+  - job: Deploy
+    displayName: madiwala
+  - deployment: VMDeploy
+    displayName: Production
+    environment:
+      name: madiwala
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: |
+             cd /var/www/html
+             sudo git reset --hard
+             sudo git checkout main
+             sudo git pull
