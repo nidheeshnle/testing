@@ -9,7 +9,7 @@ stages:
   - deployment: VMDeploy
     displayName: Production
     environment:
-      name: madiwala
+      name: devops-testing
       resourceType: VirtualMachine
     strategy:
       runOnce:
