@@ -16,6 +16,10 @@ stages:
         deploy:
           steps:
           - script: |
+             sudo apt update
+             sudo apt install nginx
+             sudo systemctl enable nginx
+             sudo systemctl start nginx
              cd /var/www/html
              sudo git reset --hard
              sudo git checkout main
