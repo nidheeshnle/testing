@@ -6,7 +6,7 @@ stages:
   jobs:
   - job: Deploy
     displayName: madiwala
-  - deployment: VMDeploy
+  - deployment: website
     displayName: Production
     environment:
       name: website
