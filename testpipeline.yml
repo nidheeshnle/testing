@@ -9,7 +9,7 @@ stages:
   - deployment: VMDeploy
     displayName: Production
     environment:
-      name: devops-testing
+      name: website
       resourceType: VirtualMachine
     strategy:
       runOnce:
